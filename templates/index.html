@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Extraction from Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Extraction from Images</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Upload and Extract Text</button>
+        </form>
+
+        {% if text %}
+            <h2>Extracted Text:</h2>
+            <textarea readonly>{{ "\n".join(text) }}</textarea>
+        {% endif %}
+
+        {% if image_url %}
+            <h2>Uploaded Image:</h2>
+            <img src="{{ image_url }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+</body>
+</html>
